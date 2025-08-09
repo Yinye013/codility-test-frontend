@@ -119,7 +119,6 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header - Responsive */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 sm:py-6 space-y-3 sm:space-y-0">
@@ -143,7 +142,6 @@ const Dashboard = () => {
 
       <main className="max-w-7xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
         <div className="space-y-6 sm:space-y-8">
-          {/* Wallet Balance Card - Responsive */}
           <div className="bg-blue-500 rounded-lg shadow-lg p-4 sm:p-6 text-white">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
               <div className="text-center sm:text-left">
@@ -264,7 +262,6 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* Total Transactions */}
               <div className="bg-white rounded-lg shadow p-4 sm:p-6">
                 <div className="flex items-center">
                   <div className="flex-shrink-0"></div>
