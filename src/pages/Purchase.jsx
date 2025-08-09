@@ -30,13 +30,24 @@ const Purchase = () => {
 
   const fetchWalletBalance = async () => {
     try {
+      setLoading(true);
       const response = await purchaseAPI.getWallet();
       setWalletBalance(response.data.data.balance);
     } catch (error) {
       console.error("Failed to fetch wallet balance:", error);
       toast.error("Failed to load wallet balance");
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -169,7 +180,6 @@ const Purchase = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header - Responsive */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 sm:py-6 space-y-3 sm:space-y-0">
@@ -215,7 +225,6 @@ const Purchase = () => {
       <main className="max-w-4xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
         <div className="space-y-6 lg:space-y-0">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Purchase Form - Responsive */}
             <div className="lg:col-span-2 order-2 lg:order-1">
               <div className="bg-white rounded-lg shadow p-4 sm:p-6">
                 <form
@@ -245,7 +254,6 @@ const Purchase = () => {
                     </p>
                   </div>
 
-                  {/* Network Selection */}
                   <div>
                     <label
                       htmlFor="network"
@@ -270,7 +278,6 @@ const Purchase = () => {
                     </select>
                   </div>
 
-                  {/* Amount */}
                   <div>
                     <label
                       htmlFor="amount"
@@ -289,7 +296,6 @@ const Purchase = () => {
                       required
                     />
 
-                    {/* Quick Amount Buttons - Responsive Grid */}
                     <div className="mt-3 sm:mt-4">
                       <p className="text-sm sm:text-base text-gray-600 mb-2">
                         Quick amounts:
@@ -317,7 +323,6 @@ const Purchase = () => {
                     </p>
                   </div>
 
-                  {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={loading}
@@ -370,9 +375,7 @@ const Purchase = () => {
               </div>
             </div>
 
-            {/* Sidebar Info - Responsive */}
             <div className="lg:col-span-1 order-1 lg:order-2 space-y-4 sm:space-y-6">
-              {/* Wallet Balance - Enhanced for Mobile */}
               <div className="bg-white rounded-lg shadow p-4 sm:p-6">
                 <div className="flex flex-row sm:flex-col items-center sm:items-start justify-between sm:justify-start space-x-4 sm:space-x-0">
                   <div className="flex-1 sm:w-full">
@@ -394,7 +397,6 @@ const Purchase = () => {
                 </div>
               </div>
 
-              {/* Purchase Info - Responsive */}
               <div className="bg-blue-50 rounded-lg p-4 sm:p-6">
                 <h4 className="text-base sm:text-lg font-medium text-blue-900 mb-3">
                   How it works

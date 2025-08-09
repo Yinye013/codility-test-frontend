@@ -1,71 +1,154 @@
-# Getting Started with Create React App
+# Airtime Wallet Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React application for managing airtime purchases and digital wallet transactions.
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-19.1.1-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC)
+![Axios](https://img.shields.io/badge/Axios-1.11.0-purple)
+![React Router](https://img.shields.io/badge/React_Router-7.8.0-CA4245)
 
-In the project directory, you can run:
+## 📋 Features
 
-### `npm start`
+- **User Authentication**: Secure login and registration
+- **Wallet Management**: View balance and transaction history
+- **Add Funds**: Top up your wallet easily
+- **Airtime Purchase**: Buy airtime for any mobile network
+- **Transaction History**: Track all your transactions
+- **Responsive Design**: Works seamlessly on mobile, tablet, and desktop
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+- Node.js (version 16.x or higher recommended)
+- npm or yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/yourusername/airtime-wallet-frontend.git
+cd airtime-wallet-frontend
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+# or with yarn
+yarn install
+```
 
-### `npm run eject`
+3. Create a `.env` file in the root directory with the following variables:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```env
+REACT_APP_BASE_URL=http://localhost:5000/api
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Start the development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm start
+# or with yarn
+yarn start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. Open [http://localhost:3000](http://localhost:3000) to view the app in your browser.
 
-## Learn More
+## 🏗️ Architecture
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```plaintext
+airtime-wallet-frontend/
+├── public/                  # Static files
+├── src/
+│   ├── components/          # Reusable components
+│   ├── context/             # React context providers
+│   ├── pages/               # Page components
+│   ├── services/            # API services
+│   ├── utils/               # Utility functions
+│   ├── App.js               # Main application component
+│   └── index.js             # Application entry point
+└── package.json             # Project dependencies and scripts
+```
 
-### Code Splitting
+### Key Components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **AuthContext**: Manages authentication state and user information
+- **ProtectedRoute**: Controls access to authenticated routes
+- **TopUpModal**: Modal component for adding funds to the wallet
+- **Dashboard**: Main user interface showing wallet information and transactions
+- **Purchase**: Interface for buying airtime
 
-### Analyzing the Bundle Size
+### API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The application uses axios for API communication with the backend. All API calls are organized in service modules:
 
-### Making a Progressive Web App
+- **authAPI**: Authentication-related endpoints
+- **purchaseAPI**: Transaction and wallet endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🔒 Authentication Flow
 
-### Advanced Configuration
+1. User submits login/register form
+2. Application sends credentials to the backend
+3. On successful authentication, the backend returns a JWT token
+4. Token is stored in localStorage and used for subsequent API calls
+5. API interceptors handle token expiration and automatic logout
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🛠️ Technologies
 
-### Deployment
+- **React**: UI library for building the interface
+- **React Router**: For navigation and routing
+- **Tailwind CSS**: For styling and responsive design
+- **Axios**: For API calls
+- **React Hot Toast**: For displaying notifications
+- **Framer Motion**: For animations and transitions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🌐 API Endpoints
 
-### `npm run build` fails to minify
+The application interacts with the following API endpoints:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# codility-test-frontend
+### Authentication
+
+- `POST /api/auth/register`: Register a new user
+- `POST /api/auth/login`: Authenticate a user
+- `GET /api/auth/currentUser`: Get current user information
+
+### Transactions
+
+- `POST /api/purchase/airtime`: Purchase airtime
+- `GET /api/purchase/wallet`: Get wallet information
+- `GET /api/purchase/transactions`: Get transaction history
+- `POST /api/purchase/add-funds`: Add funds to wallet
+
+## 🧪 Testing
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+## 🚀 Deployment
+
+Build the application for production:
+
+```bash
+npm run build
+```
+
+The build artifacts will be stored in the `build/` directory, ready to be deployed to a static hosting service.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 👥 Contributors
+
+- [Your Name](https://github.com/Yinye013)
+
+## 🙏 Acknowledgments
+
+- Thanks to all contributors and libraries used in this project.
