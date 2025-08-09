@@ -147,7 +147,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👥 Contributors
 
-- [Your Name](https://github.com/Yinye013)
+- [Onyinyechukwu Adesanya](https://github.com/Yinye013)
 
 ## 🙏 Acknowledgments
 
