@@ -170,7 +170,6 @@ export const AuthProvider = ({ children }) => {
     [state.user]
   );
 
-  // Clear error
   const clearError = useCallback(() => {
     dispatch({ type: "CLEAR_ERROR" });
   }, []);

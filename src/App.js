@@ -19,27 +19,37 @@ function App() {
     <AuthProvider>
       <Router>
         <div className="App">
-          {/* Toast notifications */}
           <Toaster
             position="top-right"
             toastOptions={{
               duration: 4000,
               style: {
-                background: "#363636",
-                color: "#fff",
+                borderRadius: "8px",
+                padding: "16px",
+                fontSize: "15px",
               },
               success: {
                 duration: 3000,
+                style: {
+                  background: "#10b981",
+                  color: "#fff",
+                  border: "1px solid #059669",
+                },
                 iconTheme: {
-                  primary: "#4ade80",
-                  secondary: "#fff",
+                  primary: "#ffffff",
+                  secondary: "#10b981",
                 },
               },
               error: {
-                duration: 4000,
+                duration: 5000,
+                style: {
+                  background: "#ef4444",
+                  color: "#fff",
+                  border: "1px solid #dc2626",
+                },
                 iconTheme: {
-                  primary: "#ef4444",
-                  secondary: "#fff",
+                  primary: "#ffffff",
+                  secondary: "#ef4444",
                 },
               },
             }}
