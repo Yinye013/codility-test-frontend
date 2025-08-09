@@ -169,16 +169,17 @@ const Purchase = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Header - Responsive */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-10">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 sm:py-6 space-y-3 sm:space-y-0">
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-6">
               <Link
                 to="/dashboard"
-                className="text-blue-600 hover:text-blue-500 flex items-center"
+                className="text-blue-600 hover:text-blue-500 active:text-blue-700 flex items-center justify-center sm:justify-start"
               >
                 <svg
-                  className="w-5 h-5 mr-2"
+                  className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -190,18 +191,20 @@ const Purchase = () => {
                     d="M10 19l-7-7m0 0l7-7m-7 7h18"
                   />
                 </svg>
-                Go back
+                <span className="text-sm sm:text-base">Go back</span>
               </Link>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">
+              <div className="text-center sm:text-left">
+                <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
                   Purchase Airtime
                 </h1>
-                <p className="text-gray-600">Buy airtime for any network</p>
+                <p className="text-sm sm:text-base text-gray-600">
+                  Buy airtime for any network
+                </p>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              className="w-full sm:w-auto bg-gray-600 hover:bg-gray-700 active:bg-gray-800 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
             >
               Logout
             </button>
@@ -209,17 +212,21 @@ const Purchase = () => {
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
+      <main className="max-w-4xl mx-auto py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+        <div className="space-y-6 lg:space-y-0">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2">
-              <div className="bg-white rounded-lg shadow p-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Purchase Form - Responsive */}
+            <div className="lg:col-span-2 order-2 lg:order-1">
+              <div className="bg-white rounded-lg shadow p-4 sm:p-6">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-4 sm:space-y-6"
+                >
                   {/* Phone Number */}
                   <div>
                     <label
                       htmlFor="phoneNumber"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
                     >
                       Phone Number
                     </label>
@@ -230,10 +237,10 @@ const Purchase = () => {
                       value={formData.phoneNumber}
                       onChange={handleChange}
                       placeholder="08012345678"
-                      className="input-field"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                       required
                     />
-                    <p className="mt-1 text-sm text-gray-500">
+                    <p className="mt-1 text-xs sm:text-sm text-gray-500">
                       Enter the phone number to receive airtime
                     </p>
                   </div>
@@ -242,7 +249,7 @@ const Purchase = () => {
                   <div>
                     <label
                       htmlFor="network"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
                     >
                       Network Provider
                     </label>
@@ -251,7 +258,7 @@ const Purchase = () => {
                       name="network"
                       value={formData.network}
                       onChange={handleChange}
-                      className="input-field"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                       required
                     >
                       <option value="">Select Network</option>
@@ -267,7 +274,7 @@ const Purchase = () => {
                   <div>
                     <label
                       htmlFor="amount"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
                     >
                       Amount (₦)
                     </label>
@@ -278,25 +285,25 @@ const Purchase = () => {
                       value={formData.amount}
                       onChange={handleChange}
                       placeholder="Enter amount"
-                      className="input-field"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                       required
                     />
 
-                    {/* Quick Amount Buttons */}
-                    <div className="mt-3">
-                      <p className="text-sm text-gray-600 mb-2">
+                    {/* Quick Amount Buttons - Responsive Grid */}
+                    <div className="mt-3 sm:mt-4">
+                      <p className="text-sm sm:text-base text-gray-600 mb-2">
                         Quick amounts:
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                         {quickAmounts.map((amount) => (
                           <button
                             key={amount}
                             type="button"
                             onClick={() => handleQuickAmount(amount)}
-                            className={`px-3 py-1 text-sm rounded-md border transition-colors duration-200 ${
+                            className={`px-2 sm:px-3 py-2 text-xs sm:text-sm font-medium rounded-md border transition-colors duration-200 ${
                               formData.amount === amount.toString()
                                 ? "bg-blue-100 border-blue-500 text-blue-700"
-                                : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+                                : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50 active:bg-gray-100"
                             }`}
                           >
                             ₦{amount}
@@ -305,7 +312,7 @@ const Purchase = () => {
                       </div>
                     </div>
 
-                    <p className="mt-2 text-sm text-gray-500">
+                    <p className="mt-2 text-xs sm:text-sm text-gray-500">
                       Minimum: ₦50 | Maximum: ₦10,000
                     </p>
                   </div>
@@ -314,12 +321,12 @@ const Purchase = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center"
+                    className="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-blue-400 text-white font-medium py-3 sm:py-4 px-4 rounded-md transition-colors duration-200 flex items-center justify-center text-sm sm:text-base"
                   >
                     {loading ? (
                       <>
                         <svg
-                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                          className="animate-spin -ml-1 mr-3 h-4 w-4 sm:h-5 sm:w-5 text-white"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -343,7 +350,7 @@ const Purchase = () => {
                     ) : (
                       <>
                         <svg
-                          className="w-5 h-5 mr-2"
+                          className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -363,35 +370,39 @@ const Purchase = () => {
               </div>
             </div>
 
-            {/* Sidebar Info */}
-            <div className="lg:col-span-1">
-              {/* Wallet Balance */}
-              <div className="bg-white rounded-lg shadow p-6 mb-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">
-                  Wallet Balance
-                </h3>
-                <div className="text-center">
-                  <p className="text-3xl font-bold text-blue-600">
-                    {formatCurrency(walletBalance)}
-                  </p>
+            {/* Sidebar Info - Responsive */}
+            <div className="lg:col-span-1 order-1 lg:order-2 space-y-4 sm:space-y-6">
+              {/* Wallet Balance - Enhanced for Mobile */}
+              <div className="bg-white rounded-lg shadow p-4 sm:p-6">
+                <div className="flex flex-row sm:flex-col items-center sm:items-start justify-between sm:justify-start space-x-4 sm:space-x-0">
+                  <div className="flex-1 sm:w-full">
+                    <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2 sm:mb-4">
+                      Wallet Balance
+                    </h3>
+                    <div className="text-left sm:text-center">
+                      <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600">
+                        {formatCurrency(walletBalance)}
+                      </p>
+                    </div>
+                  </div>
                   <button
                     onClick={fetchWalletBalance}
-                    className="mt-2 text-sm text-blue-600 hover:text-blue-500"
+                    className="flex-shrink-0 sm:w-full sm:mt-3 bg-blue-50 hover:bg-blue-100 active:bg-blue-200 text-blue-600 px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors duration-200"
                   >
-                    Refresh balance
+                    Refresh
                   </button>
                 </div>
               </div>
 
-              {/* Purchase Info */}
-              <div className="bg-blue-50 rounded-lg p-6">
-                <h4 className="text-lg font-medium text-blue-900 mb-3">
+              {/* Purchase Info - Responsive */}
+              <div className="bg-blue-50 rounded-lg p-4 sm:p-6">
+                <h4 className="text-base sm:text-lg font-medium text-blue-900 mb-3">
                   How it works
                 </h4>
-                <ul className="space-y-2 text-sm text-blue-800">
+                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-blue-800">
                   <li className="flex items-start">
                     <svg
-                      className="w-4 h-4 mr-2 mt-0.5 text-blue-600"
+                      className="w-3 h-3 sm:w-4 sm:h-4 mr-2 mt-0.5 sm:mt-1 text-blue-600 flex-shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -401,11 +412,11 @@ const Purchase = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Enter the recipient's phone number
+                    <span>Enter the recipient's phone number</span>
                   </li>
                   <li className="flex items-start">
                     <svg
-                      className="w-4 h-4 mr-2 mt-0.5 text-blue-600"
+                      className="w-3 h-3 sm:w-4 sm:h-4 mr-2 mt-0.5 sm:mt-1 text-blue-600 flex-shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -415,11 +426,11 @@ const Purchase = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Select their network provider
+                    <span>Select their network provider</span>
                   </li>
                   <li className="flex items-start">
                     <svg
-                      className="w-4 h-4 mr-2 mt-0.5 text-blue-600"
+                      className="w-3 h-3 sm:w-4 sm:h-4 mr-2 mt-0.5 sm:mt-1 text-blue-600 flex-shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -429,11 +440,11 @@ const Purchase = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Choose or enter the amount
+                    <span>Choose or enter the amount</span>
                   </li>
                   <li className="flex items-start">
                     <svg
-                      className="w-4 h-4 mr-2 mt-0.5 text-blue-600"
+                      className="w-3 h-3 sm:w-4 sm:h-4 mr-2 mt-0.5 sm:mt-1 text-blue-600 flex-shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -443,12 +454,12 @@ const Purchase = () => {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Confirm and complete purchase
+                    <span>Confirm and complete purchase</span>
                   </li>
                 </ul>
 
-                <div className="mt-4 p-3 bg-blue-100 rounded-md">
-                  <p className="text-xs text-blue-700">
+                <div className="mt-3 sm:mt-4 p-3 bg-blue-100 rounded-md">
+                  <p className="text-xs text-blue-700 leading-relaxed">
                     <strong>Note:</strong> Airtime will be delivered instantly
                     upon successful payment. Make sure the phone number and
                     network are correct.
