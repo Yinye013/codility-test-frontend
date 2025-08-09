@@ -11,8 +11,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-// import Dashboard from "./pages/Dashboard";
-// import Purchase from "./pages/Purchase";
+import Dashboard from "./pages/Dashboard";
+import Purchase from "./pages/Purchase";
 
 function App() {
   return (
@@ -53,11 +53,11 @@ function App() {
             {/* Protected routes */}
             <Route
               path="/dashboard"
-              element={<ProtectedRoute>{/* <Dashboard /> */}</ProtectedRoute>}
+              element={<ProtectedRoute>{<Dashboard />}</ProtectedRoute>}
             />
             <Route
               path="/purchase"
-              element={<ProtectedRoute>{/* <Purchase /> */}</ProtectedRoute>}
+              element={<ProtectedRoute>{<Purchase />}</ProtectedRoute>}
             />
 
             {/* Default redirect */}
